@@ -1,0 +1,12 @@
+{
+    "name": "mikeh/tth_php_composer",
+    "authors": [
+        {
+            "name": "MikeH",
+            "email": "mike123.henry@gmail.com"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^1.22"
+    }
+}
