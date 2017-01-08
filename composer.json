@@ -7,6 +7,7 @@
         }
     ],
     "require": {
-        "monolog/monolog": "^1.22"
+        "monolog/monolog": "^1.22",
+        "slim/slim": "~2.6"
     }
 }
