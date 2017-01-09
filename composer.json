@@ -1,14 +1,15 @@
 {
-    "name": "mikeh/tth_php_composer",
+    "name": "root/workspace",
     "authors": [
         {
-            "name": "MikeH",
-            "email": "mike123.henry@gmail.com"
+            "name": "Hampton Paulk",
+            "email": "hampton@teamtreehouse.com"
         }
     ],
     "require": {
-        "monolog/monolog": "^1.22",
+        "monolog/monolog": "~1.13",
         "slim/slim": "~2.6",
-        "twig/twig": "^2.0"
+        "twig/twig": "~1.18",
+        "slim/views": "0.1.*"
     }
 }
