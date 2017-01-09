@@ -13,10 +13,16 @@ use Monolog\Handler\StreamHandler;
 
 //Instantiate a Slim application:
 $app = new \Slim\Slim();
-//Define a HTTP GET route
-$app->get('/hello/:name', function ($name) {
-    echo "Hello, $name";
+//Define a Home HTTP GET route
+$app->get('/', function () use($app) {
+    $app->render('index.html');
 });
+
+//Define a contact HTTP GET route
+$app->get('/contact', function () use($app) {
+    $app->render('contact.html');
+});
+
 //run the app
 $app->run();
 
