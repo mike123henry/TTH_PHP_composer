@@ -27,13 +27,28 @@ $view->parserExtensions = array(
 //Define a Home HTTP GET route
 $app->get('/', function () use($app) {
     $app->render('about.twig');
-});
+})->name('home');
 
 //Define a contact HTTP GET route
 $app->get('/contact', function () use($app) {
-    $app->render('contact.html');
-});
+    $app->render('contact.twig');
+})->name('contact');
 
+$app->post('/contact', function () use($app) {
+    $name = $app->request->post('name');
+    $email = $app->request->post('email');
+    $msg = $app->request->post('msg');
+    if(!empty($name) && !empty($email) && !empty($msg)){
+        //clean up entries
+        $cleanName = filter_var($name, FILTER_SANITIZE_STRING);
+        $cleanEmail = filter_var($email, FILTER_SANITIZE_EMAIL);
+        $cleanMsg = filter_var($msg, FILTER_SANITIZE_STRING);
+
+    } else {
+        //flag for empty field
+        $app->redirect('contact');
+    }
+});
 //run the app
 $app->run();
 
