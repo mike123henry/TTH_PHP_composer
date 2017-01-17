@@ -48,6 +48,25 @@ $app->post('/contact', function () use($app) {
         //flag for empty field
         $app->redirect('contact');
     }
+
+
+    $transport = Swift_SendmailTransport::newInstance('/usr/sbin/sendmail -bs');
+    $mailer = \Swift_Mailer::newInstance($transport);
+
+    $message = \Swift_Message::newInstance();
+    $message -> setSubject('Email From TTH_PHP_composer website');
+    $message -> setFrom(array(
+        $cleanEmail => $cleanName
+        ));
+    $result = $mailer->send($message);
+
+    if($result > 0 ){
+        //send a thank you message
+        $app->redirect('/');
+    } else {
+        //send email not sent error message
+        $app->redirect('contact');
+    }
 });
 //run the app
 $app->run();
